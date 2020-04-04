@@ -28,7 +28,7 @@ def kNNclassify(k, X_train, y_train, x):
 
     distances = [sqrt(np.sum((x_train - x) ** 2)) for x_train in X_train]
     nearest = np.argsort(distances)
-    topK_y = [y_train[near] for near in nearest]
+    topK_y = [y_train[near] for near in nearest[:k]]
 
     votes = Counter(topK_y)
     return votes.most_common(1)[0][0]
